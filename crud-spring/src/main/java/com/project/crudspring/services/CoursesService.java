@@ -2,15 +2,12 @@ package com.project.crudspring.services;
 
 import java.util.List;
 
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
 import com.project.crudspring.converts.CoursesConverter;
 import com.project.crudspring.domains.Courses;
 import com.project.crudspring.dtos.CoursesDTO;
-import com.project.crudspring.dtos.CoursesPageDTO;
 import com.project.crudspring.exceptions.RecordNotFoundException;
 import com.project.crudspring.repositories.CoursesRepository;
 
@@ -30,10 +27,14 @@ public class CoursesService {
 		this.coursesConverter = coursesConverter;
 	}
 	
-	public CoursesPageDTO list(int page, int pageSize) {
-	    Page<Courses> pageCourse = courseRepository.findAll(PageRequest.of(page, pageSize));
-	    List<CoursesDTO> coursesList = coursesConverter.entityListToDTOList(pageCourse.getContent());
-	    return new CoursesPageDTO(coursesList, pageCourse.getTotalElements(), pageCourse.getTotalPages());
+//	public CoursesPageDTO list(int page, int pageSize) {
+//	    Page<Courses> pageCourse = courseRepository.findAll(PageRequest.of(page, pageSize));
+//	    List<CoursesDTO> coursesList = coursesConverter.entityListToDTOList(pageCourse.getContent());
+//	    return new CoursesPageDTO(coursesList, pageCourse.getTotalElements(), pageCourse.getTotalPages());
+//	}
+	
+	public List<CoursesDTO> list() {
+	   return coursesConverter.entityListToDTOList(courseRepository.findAll());
 	}
 	
 	public CoursesDTO findById(@NotNull @Positive Long id) {

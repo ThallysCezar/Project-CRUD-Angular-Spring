@@ -12,14 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
 
 import com.project.crudspring.converts.CoursesConverter;
 import com.project.crudspring.domains.Courses;
 import com.project.crudspring.dtos.CoursesDTO;
-import com.project.crudspring.dtos.CoursesPageDTO;
 import com.project.crudspring.exceptions.RecordNotFoundException;
 import com.project.crudspring.repositories.CoursesRepository;
 
@@ -42,23 +38,16 @@ public class CoursesServiceTests {
 	@Test
 	@DisplayName("Deve retornar todos os cursos listados")
 	void deveRetornarTodosCursosListados() {
-		final var page = 1;
-		final var pageSize = 10;
 		List<Courses> coursesList = List.of(new Courses());
-        Page<Courses> coursesPage = new PageImpl<>(coursesList);
-        when(coursesRepository.findAll(PageRequest.of(page, pageSize))).thenReturn(coursesPage);
-		
-        
+        when(coursesRepository.findAll()).thenReturn(coursesList);
         CoursesDTO coursesDTO = new CoursesDTO();
-        when(coursesConverter.entityListToDTOList(coursesList)).thenReturn(List.of(coursesDTO));
-        
-        CoursesPageDTO result = sut.list(page, pageSize);
-		
-		Assertions.assertEquals( 1, result.getCoursesList().size());
-		Assertions.assertEquals(1, result.getTotalElements());
-		Assertions.assertEquals(1, result.getTotalPages());
-		
-		Mockito.verify(coursesRepository, Mockito.times(1)).findAll(PageRequest.of(page, pageSize));
+        List<CoursesDTO> coursesDTOList = List.of(coursesDTO);
+
+        when(coursesConverter.entityListToDTOList(coursesList)).thenReturn(coursesDTOList);
+
+        List<CoursesDTO> result = sut.list();
+        Assertions.assertEquals(1, result.size());
+        Mockito.verify(coursesRepository, Mockito.times(1)).findAll();
 	}
 	
 	@Test

@@ -6,7 +6,7 @@ Este é um projeto de exemplo de um sistema de gerenciamento de cursos e suas re
 
 - Cadastro, atualização e exclusão de cursos.
 - Visualização da lista de cursos e seus detalhes.
-- Gerenciamento de aulas associadas a cada curso.
+- Gerenciamento dos cursos.
 - Testes unitários para o backend.
 
 ## Tecnologias Utilizadas
@@ -19,7 +19,7 @@ Este é um projeto de exemplo de um sistema de gerenciamento de cursos e suas re
   - Angular: Framework JavaScript/TypeScript para construção de interfaces de usuário.
 
 - **Testes**:
-  - Jasmine e Karma: Frameworks de teste para testes unitários em Angular.
+  - Jasmine e Karma: Frameworks de teste para testes unitários em Angular.(Pelo menos 'e o que eu quero para o projeto)
   - JUnit e Mockito: Frameworks de teste para testes unitários em Spring Boot.
 
 - **Containerização**:
@@ -34,3 +34,28 @@ Siga as etapas abaixo para executar o projeto localmente:
 ```bash
 git clone https://github.com/seu-usuario/seu-projeto.git
 cd seu-projeto
+```
+
+1. Inicialize o Backend:
+  - Certifique-se de ter o Java JDK 11 instalado.(ou use o dockerfile para rodar a image e depois rodar o docker).
+  - Apos isso, pode rodar a aplicacao, o servidor estará disponível em http://localhost:8080.
+
+2.Inicialize o Frontend:
+   - Certifique-se de ter instalado o Angular CLI.(ou use o dockerfile para rodar a image e depois rodar o docker)
+   - Apos ter se certificado disso, navegue ate o diretorio, onde se encontra o projeto crud_angular(ou o nome que preferir, mas onde esta a aplicacao frontend), e rode o comando
+```bash
+cd projeto_angular
+npm run start/ng serve
+```
+   - O aplicativo estará disponível em http://localhost:4200.
+
+3.Banco de Dados PostgreSQL:
+
+   - Certifique-se de ter o Docker instalado.
+   - Apos isso, va para o diretorio /database-docker e depois rode o comando:
+```bash
+cd projeco_backend
+cd database-docker
+sudo docker-compose up -d
+```
+  - isso fara com que suba o container que esta rodando a image do postgreSQL, o qual usei para rodar minha aplicacao com o banco de dados.
