@@ -2,6 +2,7 @@ package com.project.crudspring.controllers;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -36,9 +37,9 @@ public class CourseController {
 //	}
 	
 	@GetMapping
-	public List<CoursesDTO> list() {
-		return coursesService.list();
-	}
+	public List<CoursesDTO> listWithPagination(Pageable pageable) {
+        return coursesService.list(pageable).getContent();
+    }
 
 	@GetMapping("/{id}")
 	public CoursesDTO findById(@PathVariable @NotNull @Positive Long id) {

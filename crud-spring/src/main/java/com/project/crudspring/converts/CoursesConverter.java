@@ -3,6 +3,7 @@ package com.project.crudspring.converts;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import com.project.crudspring.domains.Courses;
@@ -51,6 +52,10 @@ public class CoursesConverter {
         return coursesList.stream()
                 .map(this::entityToDTO)
                 .collect(Collectors.toList());
+    }
+    
+    public Page<CoursesDTO> entityPageToDTOPage(Page<Courses> page) {
+        return page.map(this::entityToDTO);
     }
     
     private CategoryEnum getCategoryEnum(String category) {

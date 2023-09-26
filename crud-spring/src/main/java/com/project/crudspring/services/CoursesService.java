@@ -1,7 +1,7 @@
 package com.project.crudspring.services;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -33,8 +33,9 @@ public class CoursesService {
 //	    return new CoursesPageDTO(coursesList, pageCourse.getTotalElements(), pageCourse.getTotalPages());
 //	}
 	
-	public List<CoursesDTO> list() {
-	   return coursesConverter.entityListToDTOList(courseRepository.findAll());
+	public Page<CoursesDTO> list(Pageable pageable) {
+		Page<Courses> page = courseRepository.findAll(pageable);
+		return coursesConverter.entityPageToDTOPage(page);
 	}
 	
 	public CoursesDTO findById(@NotNull @Positive Long id) {

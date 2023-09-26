@@ -12,6 +12,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import com.project.crudspring.converts.CoursesConverter;
 import com.project.crudspring.domains.Courses;
@@ -35,19 +39,36 @@ public class CoursesServiceTests {
 		this.sut = new CoursesService(coursesRepository, coursesConverter);
 	}
 	
+//	@Test
+//	@DisplayName("Deve retornar todos os cursos listados")
+//	void deveRetornarTodosCursosListados() {
+//		List<Courses> coursesList = List.of(new Courses());
+//        when(coursesRepository.findAll()).thenReturn(coursesList);
+//        CoursesDTO coursesDTO = new CoursesDTO();
+//        List<CoursesDTO> coursesDTOList = List.of(coursesDTO);
+//
+//        when(coursesConverter.entityListToDTOList(coursesList)).thenReturn(coursesDTOList);
+//
+//        List<CoursesDTO> result = sut.list();
+//        Assertions.assertEquals(1, result.size());
+//        Mockito.verify(coursesRepository, Mockito.times(1)).findAll();
+//	}
+	
 	@Test
 	@DisplayName("Deve retornar todos os cursos listados")
 	void deveRetornarTodosCursosListados() {
-		List<Courses> coursesList = List.of(new Courses());
-        when(coursesRepository.findAll()).thenReturn(coursesList);
-        CoursesDTO coursesDTO = new CoursesDTO();
-        List<CoursesDTO> coursesDTOList = List.of(coursesDTO);
+	    List<Courses> coursesList = List.of(new Courses());
+	    Page<Courses> coursesPage = new PageImpl<>(coursesList);
 
-        when(coursesConverter.entityListToDTOList(coursesList)).thenReturn(coursesDTOList);
+	    when(coursesRepository.findAll(Mockito.any(Pageable.class))).thenReturn(coursesPage);
 
-        List<CoursesDTO> result = sut.list();
-        Assertions.assertEquals(1, result.size());
-        Mockito.verify(coursesRepository, Mockito.times(1)).findAll();
+	    CoursesDTO coursesDTO = new CoursesDTO();
+	    List<CoursesDTO> coursesDTOList = List.of(coursesDTO);
+	    when(coursesConverter.entityPageToDTOPage(coursesPage)).thenReturn(new PageImpl<>(coursesDTOList));
+
+	    Page<CoursesDTO> result = sut.list(PageRequest.of(0, 10));
+	    Assertions.assertEquals(1, result.getTotalElements());
+	    Mockito.verify(coursesRepository, Mockito.times(1)).findAll(Mockito.any(Pageable.class));
 	}
 	
 	@Test
