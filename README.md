@@ -38,11 +38,11 @@ cd seu-projeto
 
 1. Inicialize o Backend:
   - Certifique-se de ter o Java JDK 11 instalado.(ou use o dockerfile para rodar a image e depois rodar o docker).
-  - Apos isso, pode rodar a aplicacao, o servidor estará disponível em http://localhost:8080.
+  - Apos isso, pode rodar a aplicação, o servidor estará disponível em http://localhost:8080.
 
 2. Inicialize o Frontend:
    - Certifique-se de ter instalado o Angular CLI.(ou use o dockerfile para rodar a image e depois rodar o docker)
-   - Apos ter se certificado disso, navegue ate o diretorio, onde se encontra o projeto crud_angular(ou o nome que preferir, mas onde esta a aplicacao frontend), e rode o comando
+   - Apos ter se certificado disso, navegue ate o diretorio, onde se encontra o projeto crud_angular(ou o nome que preferir, mas onde esta a aplicação frontend), e rode o comando
 ```bash
 cd projeto_angular
 npm run start/ng serve
@@ -58,4 +58,27 @@ cd projeco_backend
 cd database-docker
 sudo docker-compose up -d
 ```
-  - isso fara com que suba o container que esta rodando a image do postgreSQL, o qual usei para rodar minha aplicacao com o banco de dados.
+  - isso fara com que suba o container que esta rodando a image do postgreSQL, o qual usei para rodar minha aplicação com o banco de dados.
+
+## Project Images
+
+<p align="center">
+  <span>Imagem da Página Incial</span>
+  <img src="./asserts/imgs/../../assets/imgs/home.jpeg" alt="Project Image, Imagem da Página Incial">
+</p>
+
+- Página inicial da aplicação
+
+<p align="center">
+  <span>Imagem da Página Incial</span>
+  <img src="./asserts/imgs/../../assets/imgs/edit.jpeg" alt="Project Image, Imagem da Página Incial">
+</p>
+
+- pagina Inicialize
+
+<p align="center">
+  <span>Imagem da Página de Add Cursos</span>
+  <img src="./asserts/imgs/../../assets/imgs/create.jpeg" alt="Project Image, Imagem da Página Add Cursos">
+</p>
+
+- Pagina de criação de um novo curso com suas respectivas aulas.
