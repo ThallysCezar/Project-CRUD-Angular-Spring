@@ -1,0 +1,13 @@
+mat-table {
+  overflow: auto;
+  max-height: 600px;
+}
+
+.action-col {
+  flex: 0 0 110px;
+}
+
+.action-col-hearder {
+  flex: 0 0 95px;
+  justify-content: center;
+}
