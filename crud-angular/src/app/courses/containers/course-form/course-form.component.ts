@@ -13,6 +13,8 @@ import { Course } from '../../models/course';
 import { CoursesService } from '../../services/courses.service';
 import { Lesson } from '../../models/lesson';
 import { FormUtilsService } from 'src/app/shared/form/form-utils.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
 
 @Component({
   selector: 'app-course-form',
@@ -26,6 +28,7 @@ export class CourseFormComponent implements OnInit {
     private formBuilder: NonNullableFormBuilder,
     private service: CoursesService,
     private snackBar: MatSnackBar,
+    private dialog: MatDialog,
     private location: Location,
     private route: ActivatedRoute,
     public formUtils: FormUtilsService
@@ -65,7 +68,7 @@ export class CourseFormComponent implements OnInit {
 
   private createLesson(lesson: Lesson = { id: '', name: '', youtubeURL: '' }) {
     return this.formBuilder.group({
-      id: [lesson.id],
+      _id: [lesson.id],
       name: [
         lesson.name,
         [
@@ -74,7 +77,7 @@ export class CourseFormComponent implements OnInit {
           Validators.maxLength(100),
         ],
       ],
-      youtubeURL: [
+      youtubeUrl: [
         lesson.youtubeURL,
         [
           Validators.required,
@@ -85,16 +88,39 @@ export class CourseFormComponent implements OnInit {
     });
   }
 
-  getLessonsFormArray() {
+  getLessonFormArray() {
     return (<UntypedFormArray>this.form.get('lessons')).controls;
+  }
+
+  getErrorMessage(fieldName: string): string {
+    return this.formUtils.getFieldErrorMessage(this.form, fieldName);
+  }
+
+  getLessonErrorMessage(fieldName: string, index: number) {
+    return this.formUtils.getFieldFormArrayErrorMessage(
+      this.form,
+      'lessons',
+      fieldName,
+      index
+    );
+  }
+
+  addLesson(): void {
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.push(this.createLesson());
+  }
+
+  removeLesson(index: number) {
+    const lessons = this.form.get('lessons') as UntypedFormArray;
+    lessons.removeAt(index);
   }
 
   onSubmit() {
     if (this.form.valid) {
-      this.service.save(this.form.value).subscribe(
-        () => this.onSuccess(),
-        () => this.onError()
-      );
+      this.service.save(this.form.value as Course).subscribe({
+        next: () => this.onSuccess(),
+        error: () => this.onError(),
+      });
     } else {
       this.formUtils.validateAllFormFields(this.form);
     }
@@ -104,22 +130,14 @@ export class CourseFormComponent implements OnInit {
     this.location.back();
   }
 
-  private onError() {
-    this.snackBar.open('Erro ao salvar curso.', '', { duration: 3000 });
-  }
-
   private onSuccess() {
-    this.snackBar.open('Curso salvo com sucesso.', '', { duration: 3000 });
+    this.snackBar.open('Course saved successfully!', '', { duration: 5000 });
     this.onCancel();
   }
 
-  addNewLesson() {
-    const lessons = this.form.get('lessons') as UntypedFormArray;
-    lessons.push(this.createLesson());
-  }
-
-  removeLesson(index: number) {
-    const lessons = this.form.get('lessons') as UntypedFormArray;
-    lessons.removeAt(index);
+  private onError() {
+    this.dialog.open(ErrorDialogComponent, {
+      data: 'Error saving course.',
+    });
   }
 }

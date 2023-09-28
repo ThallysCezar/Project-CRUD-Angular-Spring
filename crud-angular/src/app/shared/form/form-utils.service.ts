@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import {
+  FormControl,
+  FormGroup,
   UntypedFormArray,
   UntypedFormControl,
   UntypedFormGroup,
@@ -26,50 +28,43 @@ export class FormUtilsService {
     });
   }
 
-  getErrorMessage(formGroup: UntypedFormGroup, fieldName: string) {
-    const field = formGroup.get(fieldName) as UntypedFormControl;
-    return this.getErrorMessagegeFromField(field);
+  getFieldErrorMessage(formGroup: FormGroup, fieldName: string): string {
+    const field = formGroup.get(fieldName) as FormControl;
+    return this.getErrorMessageFromField(field);
   }
 
-  getErrorMessagegeFromField(field: UntypedFormControl) {
-    if (field?.hasError('required')) {
-      return 'Campo obrigatório';
-    }
-
-    if (field?.hasError('minlength')) {
-      const requiredLength: number = field.errors
-        ? field.errors['minlength']['requiredLength']
-        : 5;
-      return `Tamanho mínimo precisa ser de ${requiredLength} caracteres.`;
-    }
-
-    if (field?.hasError('maxlength')) {
-      const requiredLength: number = field.errors
-        ? field.errors['maxlength']['requiredLength']
-        : 200;
-      return `Tamanho máximo excedido de ${requiredLength} caracteres.`;
-    }
-
-    return 'Campo Inválido';
-  }
-
-  getFormArrayFieldErrorMessage(
-    formGroup: UntypedFormGroup,
+  getFieldFormArrayErrorMessage(
+    formGroup: FormGroup,
     formArrayName: string,
     fieldName: string,
     index: number
   ) {
     const formArray = formGroup.get(formArrayName) as UntypedFormArray;
-    const field = formArray.controls[index].get(
-      fieldName
-    ) as UntypedFormControl;
-    return this.getErrorMessagegeFromField(field);
+    return this.getErrorMessageFromField(
+      formArray.controls[index].get(fieldName) as UntypedFormControl
+    );
   }
 
-  ifFormArrayRequired(formGroup: UntypedFormGroup, formArrayName: string) {
-    const formArray = formGroup.get(formArrayName) as UntypedFormArray;
-    return (
-      !formArray.valid && formArray.hasError('required') && formArray.touched
-    );
+  getErrorMessageFromField(field: UntypedFormControl): string {
+    if (field?.hasError('required')) {
+      return 'Field is required.';
+    }
+
+    if (field?.hasError('maxlength') && field.errors) {
+      const requiredLength = field.errors['maxlength']['requiredLength'];
+      return `Field cannot be more than ${requiredLength} characters long.`;
+    }
+
+    if (field?.hasError('minlength') && field.errors) {
+      const requiredLength = field.errors['minlength']['requiredLength'];
+      return `Field cannot be less than ${requiredLength} characters long.`;
+    }
+
+    return field['errors'] ? 'Error' : '';
+  }
+
+  isFormArrayRequired(formGroup: UntypedFormGroup, fieldName: string) {
+    const field = formGroup.get(fieldName) as UntypedFormControl;
+    return !field.valid && field.hasError('required') && field.touched;
   }
 }

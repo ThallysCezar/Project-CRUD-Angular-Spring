@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Course } from '../../models/course';
-import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-courses-list',
@@ -8,10 +7,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./courses-list.component.scss'],
 })
 export class CoursesListComponent {
-  constructor() {}
-
-  @Input() dataSource: MatTableDataSource<Course> =
-    new MatTableDataSource<Course>([]);
+  @Input() courses: Course[] = [];
   @Output() add: EventEmitter<boolean> = new EventEmitter(false);
   @Output() edit: EventEmitter<Course> = new EventEmitter(false);
   @Output() remove: EventEmitter<Course> = new EventEmitter(false);

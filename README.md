@@ -36,31 +36,42 @@ git clone https://github.com/seu-usuario/seu-projeto.git
 cd seu-projeto
 ```
 
-1. Inicialize o Backend:
-  - Certifique-se de ter o Java JDK 11 instalado.(ou use o dockerfile para rodar a image e depois rodar o docker).
+1.1. Inicialize o Backend:
+  - Certifique-se de ter o Java JDK 11 instalado (ou use o Dockerfile para criar uma imagem e depois execute o Docker).
   - Apos isso, pode rodar a aplicação, o servidor estará disponível em http://localhost:8080.
 
-2. Inicialize o Frontend:
-   - Certifique-se de ter instalado o Angular CLI.(ou use o dockerfile para rodar a image e depois rodar o docker)
-   - Apos ter se certificado disso, navegue ate o diretorio, onde se encontra o projeto crud_angular(ou o nome que preferir, mas onde esta a aplicação frontend), e rode o comando
+## Documentação com Swagger
+A documentação completa da API pode ser encontrada no Swagger. Para acessar a documentação, siga as etapas abaixo:
+
+1. Certifique-se de que o projeto backend está em execução.
+
+2. Abra um navegador da web e vá para a seguinte URL:
+
+   [Swagger API Documentation](http://localhost:8080/swagger-ui/index.html)
+
+   Isso abrirá a interface do Swagger, onde você pode explorar e testar os endpoints da API.
+
+
+1.2. Inicialize o Frontend:
+  - Certifique-se de ter instalado o Angular CLI (ou use o Dockerfile para criar uma imagem e depois execute o Docker).
+  - Depois de ter certeza disso, navegue até o diretório onde está o projeto crud_angular (ou o nome que preferir, mas onde está a aplicação frontend) e execute o seguinte comando:
 ```bash
 cd projeto_angular
 npm run start/ng serve
 ```
-   - O aplicativo estará disponível em http://localhost:4200.
+  - O aplicativo estará disponível em http://localhost:4200.
 
-3. Banco de Dados PostgreSQL:
-
-   - Certifique-se de ter o Docker instalado.
-   - Apos isso, va para o diretorio /database-docker e depois rode o comando:
+1.3. Banco de Dados PostgreSQL:
+  - Certifique-se de ter o Docker instalado.
+  - Em seguida, vá para o diretório /database-docker e execute o seguinte comando:
 ```bash
 cd projeco_backend
 cd database-docker
 sudo docker-compose up -d
 ```
-  - isso fara com que suba o container que esta rodando a image do postgreSQL, o qual usei para rodar minha aplicação com o banco de dados.
+  - Isso iniciará um contêiner que executa a imagem do PostgreSQL, que é usada para executar a aplicação com o banco de dados.
 
-## Project Images
+## Imagens do Projeto
 
 <p align="center">
   <span>Imagem da Página Incial</span>

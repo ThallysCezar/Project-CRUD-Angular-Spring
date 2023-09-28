@@ -14,9 +14,11 @@ export class CoursesService {
 
   constructor(private httpClient: HttpClient) {}
   list(page = 0, pageSize = 10) {
-    return this.httpClient.get<CoursePage>(this.API, {
-      params: { page, pageSize },
-    });
+    return this.httpClient
+      .get<CoursePage>(this.API, {
+        params: { page, pageSize },
+      })
+      .pipe(tap((data) => (this.cache = data.courses)));
   }
 
   loadById(id: string) {

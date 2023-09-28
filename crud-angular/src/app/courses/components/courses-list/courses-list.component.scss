@@ -1,4 +1,4 @@
-mat-table {
+.mat-table {
   overflow: auto;
   max-height: 600px;
 }
@@ -10,4 +10,8 @@ mat-table {
 .action-col-hearder {
   flex: 0 0 95px;
   justify-content: center;
+}
+
+.cdk-header-cell {
+  font-weight: bold;
 }

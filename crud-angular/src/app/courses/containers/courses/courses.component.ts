@@ -2,7 +2,6 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MatTableDataSource } from '@angular/material/table';
 import { ActivatedRoute, Router } from '@angular/router';
 import { catchError, Observable, of, tap } from 'rxjs';
 import { ConfirmationDialogComponent } from 'src/app/shared/components/confirmation-dialog/confirmation-dialog.component';
@@ -11,6 +10,7 @@ import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/err
 import { Course } from '../../models/course';
 import { CoursePage } from '../../models/course-page';
 import { CoursesService } from '../../services/courses.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-courses',
@@ -18,9 +18,7 @@ import { CoursesService } from '../../services/courses.service';
   styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
-  displayedColumns = ['name', 'category', 'actions'];
   courses$: Observable<CoursePage> | null = null;
-  dataSource = new MatTableDataSource<Course>([]); // Alteração aqui
   pageIndex = 0;
   pageSize = 10;
 
@@ -39,21 +37,19 @@ export class CoursesComponent {
   }
 
   refresh(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 10 }) {
-    console.log('Chamando refresh com:', pageEvent);
-    this.coursesService
+    this.courses$ = this.coursesService
       .list(pageEvent.pageIndex, pageEvent.pageSize)
       .pipe(
-        tap((response) => {
+        tap((response: CoursePage) => {
           this.pageIndex = pageEvent.pageIndex;
           this.pageSize = pageEvent.pageSize;
-          this.dataSource.data = response.courses; // Atualiza o dataSource
+          console.log(response);
         }),
         catchError(() => {
           this.onError('Error loading courses.');
           return of({ courses: [], totalElements: 0 } as CoursePage);
         })
-      )
-      .subscribe();
+      );
   }
 
   onError(errorMsg: string) {
