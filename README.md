@@ -73,23 +73,34 @@ sudo docker-compose up -d
 
 ## Imagens do Projeto
 
-<p align="center">
+<!-- <p align="center">
   <span>Imagem da Página Incial</span>
   <img src="./asserts/imgs/../../assets/imgs/home.jpeg" alt="Project Image, Imagem da Página Incial">
-</p>
+</p> -->
+![Imagem da Página Inicial](./assets/imgs/home.jpeg)
 
-- Página inicial da aplicação
+- *A Página Inicial é onde você encontrará a lista de cursos disponíveis. Aqui você pode adicionar novos cursos, remover cursos existentes e editar as informações dos cursos, como nome e categoria.*
 
-<p align="center">
-  <span>Imagem da Página Incial</span>
+<!-- <p align="center">
+  <span>Imagem da Página de Edição</span>
   <img src="./asserts/imgs/../../assets/imgs/edit.jpeg" alt="Project Image, Imagem da Página Incial">
-</p>
+</p> -->
+![Imagem da Página de Edição](./assets/imgs/edit.jpeg)
 
-- pagina Inicialize
+- *A Página de Edição permite que você faça edições detalhadas nos cursos. Você pode alterar o nome, a categoria e também gerenciar as aulas associadas a cada curso, incluindo adicionar, editar e remover aulas.*
 
-<p align="center">
+<!-- <p align="center">
   <span>Imagem da Página de Add Cursos</span>
   <img src="./asserts/imgs/../../assets/imgs/create.jpeg" alt="Project Image, Imagem da Página Add Cursos">
-</p>
+</p> -->
+![Imagem da Página de Adicionar Curso](./assets/imgs/create.jpeg)
 
-- Pagina de criação de um novo curso com suas respectivas aulas.
+- *A Página de Adicionar Curso oferece a funcionalidade de criar novos cursos. Você pode especificar o nome, a categoria do curso e, além disso, adicionar, editar e remover aulas diretamente durante o processo de criação do curso.*
+
+
+
+
+
+
+
+
