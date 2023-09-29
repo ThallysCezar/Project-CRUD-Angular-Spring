@@ -40,11 +40,13 @@ Siga as etapas abaixo para executar o projeto localmente:
 	cd seu-projeto
 	```
 
-1.1. Inicialize o Backend:
+2. Inicialize o Backend:
+
   - Certifique-se de ter o Java JDK 11 instalado (ou use o Dockerfile para criar uma imagem e depois execute o Docker).
   - Apos isso, pode rodar a aplicação, o servidor estará disponível em http://localhost:8080.
 
-1.2. Inicialize o Frontend:
+3. Inicialize o Frontend:
+
   - Certifique-se de ter instalado o Angular CLI (ou use o Dockerfile para criar uma imagem e depois execute o Docker).
   - Depois de ter certeza disso, navegue até o diretório onde está o projeto crud_angular (ou o nome que preferir, mas onde está a aplicação frontend) e execute o seguinte comando:
   
@@ -55,7 +57,8 @@ Siga as etapas abaixo para executar o projeto localmente:
 
   - O aplicativo estará disponível em http://localhost:4200.
 
-1.3. Banco de Dados PostgreSQL:
+4. Banco de Dados PostgreSQL:
+
   - Certifique-se de ter o Docker instalado.
   - Em seguida, vá para o diretório /database-docker e execute o seguinte comando:
   
@@ -70,14 +73,14 @@ Siga as etapas abaixo para executar o projeto localmente:
 ### Rodando com Docker:
 Você também pode executar a aplicação usando Docker. Certifique-se de ter o Docker instalado em sua máquina.
 
-1.1. Clone o repositório do GitHub:
+1. Clone o repositório do GitHub:
 
 	```bash
 	git clone https://github.com/seu-usuario/seu-projeto.git
 	cd seu-projeto
 	```
 	
-1.2. Inicialize o Backend com Docker:
+2. Inicialize o Backend com Docker:
 
 	```bash
 	cd projeto_spring
@@ -87,7 +90,7 @@ Você também pode executar a aplicação usando Docker. Certifique-se de ter o 
 	
 - O servidor estará disponível em http://localhost:8080.
 
-2. Inicialize o Frontend com Docker:
+3. Inicialize o Frontend com Docker:
 
 	```bash
 	cd projeto_angular
@@ -97,7 +100,7 @@ Você também pode executar a aplicação usando Docker. Certifique-se de ter o 
 	
 - O aplicativo estará disponível em http://localhost.
 
-2.1 Banco de Dados PostgreSQL com Docker:
+4. Banco de Dados PostgreSQL com Docker:
 
 	```bash
 	cd projeto_backend
@@ -106,6 +109,18 @@ Você também pode executar a aplicação usando Docker. Certifique-se de ter o 
 	```
 	
 - Isso iniciará um contêiner que executa a imagem do PostgreSQL, que é usada para executar a aplicação com o banco de dados.
+
+
+## Documentação com Swagger
+A documentação completa da API pode ser encontrada no Swagger. Para acessar a documentação, siga as etapas abaixo:
+
+1. Certifique-se de que o projeto backend está em execução.
+
+2. Abra um navegador da web e vá para a seguinte URL:
+
+   [Swagger API Documentation](http://localhost:8080/swagger-ui/index.html)
+
+3. Isso abrirá a interface do Swagger, onde você pode explorar e testar os endpoints da API.
 
 ## Imagens do Projeto
 

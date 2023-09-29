@@ -30,48 +30,43 @@ Siga as etapas abaixo para executar a aplicação localmente:
    cd seu-projeto-angular
    ```
    
-1.1. Instale as dependências do projeto:
+2. Instale as dependências do projeto:
 
 	```bash
-	Copy code
 	npm install
 	```
 	
-1.2. Inicie a aplicação:
+3. Inicie a aplicação:
 
 	```bash
-	Copy code
 	ng serve
 	```
 	
-1.4. Abra seu navegador e acesse a aplicação em http://localhost:4200.
+4. Abra seu navegador e acesse a aplicação em http://localhost:4200.
 
 ## Como Executar a Aplicação com Docker
 Se você preferir, também pode executar a aplicação usando Docker. Certifique-se de ter o Docker instalado em sua máquina.
 
-2. Clone o repositório do GitHub:
+1. Clone o repositório do GitHub:
 
 	```bash
-	Copy code
 	git clone https://github.com/seu-usuario/seu-projeto-angular.git
 	cd seu-projeto-angular
 	```
 	
-2.1. Crie a imagem Docker a partir do Dockerfile fornecido:
+2. Crie a imagem Docker a partir do Dockerfile fornecido:
 
 	```bash
-	Copy code
 	docker build -t meu-projeto-angular
 	```
 
-2.3. Execute o contêiner Docker:
+3. Execute o contêiner Docker:
 
 	```bash
-	Copy code
 	docker run -p 8080:80 meu-projeto-angular
 	```
 
-2.4. Abra seu navegador e acesse a aplicação em http://localhost:8080.
+4. Abra seu navegador e acesse a aplicação em http://localhost:8080.
 
 
 ## Recursos Futuros

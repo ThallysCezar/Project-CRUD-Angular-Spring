@@ -30,13 +30,13 @@ Siga as etapas abaixo para executar o projeto localmente:
    cd seu-projeto-backend
    ```
    
-1.1. Certifique-se de ter o Java JDK 11 instalado.
+2. Certifique-se de ter o Java JDK 11 instalado.
 
-1.2. Certifique-se de ter o Docker instalado.
+3. Certifique-se de ter o Docker instalado.
 
-1.3. Inicialize o Banco de Dados PostgreSQL usando Docker:
+4. Inicialize o Banco de Dados PostgreSQL usando Docker:
 
-1.4. Navegue até o diretório database-docker no projeto backend e execute o seguinte comando:
+5. Navegue até o diretório database-docker no projeto backend e execute o seguinte comando:
 
 	```bash
 	cd database-docker
@@ -45,18 +45,18 @@ Siga as etapas abaixo para executar o projeto localmente:
 	
 - Isso iniciará um container Docker com o PostgreSQL e o DBeaver (uma ferramenta de gerenciamento de banco de dados) para facilitar a visualização dos dados.
 
-1.5. Acesse o DBeaver para gerenciar o banco de dados:
+6. Acesse o DBeaver para gerenciar o banco de dados:
 
 - Abra o DBeaver e crie uma nova conexão PostgreSQL para o servidor localhost na porta 5432. As credenciais padrão são geralmente postgres como usuário e senha.
 
-1.6. Inicialize o projeto Spring Boot:
+7. Inicialize o projeto Spring Boot:
 
 - Execute a aplicação Spring Boot. O servidor estará disponível em http://localhost:8080.
 
 ## Como Executar a Aplicação com Docker
 Se você preferir, também pode executar a aplicação usando Docker. Certifique-se de ter o Docker instalado em sua máquina.
 
-2. Clone o repositório do GitHub:
+1. Clone o repositório do GitHub:
 
 	```bash
 	git clone https://github.com/seu-usuario/seu-projeto-backend.git
@@ -65,7 +65,7 @@ Se você preferir, também pode executar a aplicação usando Docker. Certifique
 
 - Certifique-se de ter o Docker instalado.
 
-2.1. Crie a imagem Docker usando o Dockerfile personalizado:
+2. Crie a imagem Docker usando o Dockerfile personalizado:
 
 - Navegue até o diretório raiz do projeto backend (onde o Dockerfile está localizado) e execute o seguinte comando:
 
@@ -83,7 +83,7 @@ Se você preferir, também pode executar a aplicação usando Docker. Certifique
 
 ## Testes Unitários
 
-A camada de serviço do projeto contém testes unitários. Para executá-los, basta rodar os testes do projeto em sua IDE de desenvolvimento ou usando o Maven:
+- A camada de serviço do projeto contém testes unitários. Para executá-los, basta rodar os testes do projeto em sua IDE de desenvolvimento ou usando o Maven:
 
 	```bash
 	mvn test
