@@ -36,8 +36,8 @@ Siga as etapas abaixo para executar o projeto localmente:
 1. Clone o repositório do GitHub:
 
 	```bash
-	git clone https://github.com/seu-usuario/seu-projeto.git
-	cd seu-projeto
+		git clone https://github.com/seu-usuario/seu-projeto.git
+		cd seu-projeto
 	```
 
 1.1. Inicialize o Backend:
@@ -49,8 +49,8 @@ Siga as etapas abaixo para executar o projeto localmente:
   - Depois de ter certeza disso, navegue até o diretório onde está o projeto crud_angular (ou o nome que preferir, mas onde está a aplicação frontend) e execute o seguinte comando:
   
 	```bash
-	cd projeto_angular
-	npm run start/ng serve
+		cd projeto_angular
+		npm run start/ng serve
 	```
 
   - O aplicativo estará disponível em http://localhost:4200.
@@ -60,9 +60,9 @@ Siga as etapas abaixo para executar o projeto localmente:
   - Em seguida, vá para o diretório /database-docker e execute o seguinte comando:
   
 	```bash
-	cd projeco_backend
-	cd database-docker
-	sudo docker-compose up -d
+		cd projeco_backend
+		cd database-docker
+		sudo docker-compose up -d
 	```
 	
   - Isso iniciará um contêiner que executa a imagem do PostgreSQL, que é usada para executar a aplicação com o banco de dados.
@@ -73,16 +73,16 @@ Você também pode executar a aplicação usando Docker. Certifique-se de ter o 
 1.1. Clone o repositório do GitHub:
 
 	```bash
-	git clone https://github.com/seu-usuario/seu-projeto.git
-	cd seu-projeto
+		git clone https://github.com/seu-usuario/seu-projeto.git
+		cd seu-projeto
 	```
 	
 1.2. Inicialize o Backend com Docker:
 
 	```bash
-	cd projeto_spring
-	docker build -t meu-projeto-spring .
-	docker run -p 8080:8080 meu-projeto-spring
+		cd projeto_spring
+		docker build -t meu-projeto-spring .
+		docker run -p 8080:8080 meu-projeto-spring
 	```
 	
 - O servidor estará disponível em http://localhost:8080.
@@ -90,9 +90,9 @@ Você também pode executar a aplicação usando Docker. Certifique-se de ter o 
 2. Inicialize o Frontend com Docker:
 
 	```bash
-	cd projeto_angular
-	docker build -t meu-projeto-angular .
-	docker run -p 80:80 meu-projeto-angular
+		cd projeto_angular
+		docker build -t meu-projeto-angular .
+		docker run -p 80:80 meu-projeto-angular
 	```
 	
 - O aplicativo estará disponível em http://localhost.
@@ -100,9 +100,9 @@ Você também pode executar a aplicação usando Docker. Certifique-se de ter o 
 2.1 Banco de Dados PostgreSQL com Docker:
 
 	```bash
-	cd projeto_backend
-	cd database-docker
-	docker-compose up -d
+		cd projeto_backend
+		cd database-docker
+		docker-compose up -d
 	```
 	
 - Isso iniciará um contêiner que executa a imagem do PostgreSQL, que é usada para executar a aplicação com o banco de dados.
