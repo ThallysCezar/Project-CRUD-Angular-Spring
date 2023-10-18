@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.project.crudspring.domains.Users;
 import com.project.crudspring.dtos.AuthenticationDTO;
+import com.project.crudspring.dtos.LoginResponseDTO;
 import com.project.crudspring.dtos.RegisterDTO;
+import com.project.crudspring.infra.security.TokenService;
 import com.project.crudspring.repositories.UsersRepository;
 
 import jakarta.validation.Valid;
@@ -26,13 +28,18 @@ public class AuthenticationController {
 	
 	@Autowired
 	private UsersRepository repository;
+	
+	@Autowired
+	private TokenService tokenService;
 
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data) {
 		final var userNamePassword = new UsernamePasswordAuthenticationToken(data.getLogin(), data.getPassword());
 		final var auth = this.authenticationManager.authenticate(userNamePassword);
 		
-		return ResponseEntity.ok().build();
+		final var token = tokenService.generateToken((Users) auth.getPrincipal());
+		
+		return ResponseEntity.ok(new LoginResponseDTO(token));
 	}
 	
 	
