@@ -15,7 +15,7 @@ Este é um projeto de exemplo de um sistema de gerenciamento de cursos e suas re
   - Spring Boot (Java): Framework Java para desenvolvimento de aplicativos web.
   - PostgreSQL: Banco de dados relacional para armazenar informações de cursos e aulas.
   - DBeaver: Uma ferramenta de gerenciamento de banco de dados que oferece uma interface gráfica para visualizar, editar e administrar bancos de dados PostgreSQL e outras bases de dados. O DBeaver é utilizado para facilitar o gerenciamento e a interação com o banco de dados PostgreSQL, tornando mais fácil a administração e visualização dos dados da aplicação.
-  - **Spring Security e JWT**: Para a camada de segurança da aplicação em Backend, utilizei o Spring Security em conjunto com JWT (JSON Web Tokens) para autenticação e autorização.
+  - Spring Security e JWT: Para a camada de segurança da aplicação em Backend, utilizei o Spring Security em conjunto com JWT (JSON Web Tokens) para autenticação e autorização.
 
 - **Frontend**:
   - Angular: Framework JavaScript/TypeScript para construção de interfaces de usuário.
