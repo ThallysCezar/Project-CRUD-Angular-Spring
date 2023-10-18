@@ -123,14 +123,14 @@ A documentação completa da API pode ser encontrada no Swagger. Para acessar a 
 
 3. Isso abrirá a interface do Swagger, onde você pode explorar e testar os endpoints da API.
 
-### Segurança com JWT e Spring Security
+## Segurança com JWT e Spring Security
 
 Para garantir a segurança da aplicação, utilizamos o JSON Web Token (JWT) em conjunto com o Spring Security. A aplicação foi configurada com dois níveis de acesso: ADMIN e USER.
 
 - **ADMIN**: Tem permissão total para todas as operações.
 - **USER**: Pode listar os cursos, mas não pode realizar operações de criação, atualização e exclusão.
 
-## Usuários para Testes
+### Usuários para Testes
 
 Durante o desenvolvimento, criamos dois usuários de teste para demonstrar a autenticação:
 
