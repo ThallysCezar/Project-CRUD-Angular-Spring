@@ -15,6 +15,7 @@ Este é um projeto de exemplo de um sistema de gerenciamento de cursos e suas re
   - Spring Boot (Java): Framework Java para desenvolvimento de aplicativos web.
   - PostgreSQL: Banco de dados relacional para armazenar informações de cursos e aulas.
   - DBeaver: Uma ferramenta de gerenciamento de banco de dados que oferece uma interface gráfica para visualizar, editar e administrar bancos de dados PostgreSQL e outras bases de dados. O DBeaver é utilizado para facilitar o gerenciamento e a interação com o banco de dados PostgreSQL, tornando mais fácil a administração e visualização dos dados da aplicação.
+  - **Spring Security e JWT**: Para a camada de segurança da aplicação em Backend, utilizei o Spring Security em conjunto com JWT (JSON Web Tokens) para autenticação e autorização.
 
 - **Frontend**:
   - Angular: Framework JavaScript/TypeScript para construção de interfaces de usuário.
@@ -121,6 +122,44 @@ A documentação completa da API pode ser encontrada no Swagger. Para acessar a 
    [Swagger API Documentation](http://localhost:8080/swagger-ui/index.html)
 
 3. Isso abrirá a interface do Swagger, onde você pode explorar e testar os endpoints da API.
+
+### Segurança com JWT e Spring Security
+
+Para garantir a segurança da aplicação, utilizamos o JSON Web Token (JWT) em conjunto com o Spring Security. A aplicação foi configurada com dois níveis de acesso: ADMIN e USER.
+
+- **ADMIN**: Tem permissão total para todas as operações.
+- **USER**: Pode listar os cursos, mas não pode realizar operações de criação, atualização e exclusão.
+
+## Usuários para Testes
+
+Durante o desenvolvimento, criamos dois usuários de teste para demonstrar a autenticação:
+
+- **Usuário Administrador (ADMIN)**
+  - **Login**: thallyscezar
+  - **Senha**: 123456789
+
+- **Usuário Padrão (USER)**
+  - **Login**: thallyscezarUser
+  - **Senha**: 123456789
+  
+  ## Geração de Token de Acesso
+
+Para obter um token de acesso, siga estas etapas:
+
+1. Acesse o endpoint de login em sua aplicação:
+   - [http://localhost:8080/auth/login](http://localhost:8080/auth/login)
+
+2. Insira seu nome de usuário e senha (por exemplo, `thallyscezar` e `123456789`) e envie a solicitação.
+
+3. Após a autenticação bem-sucedida, a resposta conterá um token JWT.
+
+4. Copie o token JWT gerado.
+
+## Enviando o Token nas Requisições
+
+Para acessar as rotas protegidas em sua aplicação, você deve incluir o token JWT no cabeçalho de autorização da solicitação HTTP. Você deve formatar o token como um "Bearer Token".
+
+Ao incluir o token JWT no cabeçalho, você terá acesso às operações permitidas com base no nível de acesso do seu usuário. Caso contrário, a solicitação resultará em um status HTTP 403 (Proibido).
 
 ## Imagens do Projeto
 

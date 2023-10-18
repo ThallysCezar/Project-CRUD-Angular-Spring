@@ -15,10 +15,8 @@ import com.project.crudspring.exceptions.RecordNotFoundException;
 import com.project.crudspring.repositories.CoursesRepository;
 
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.PositiveOrZero;
 
 @Validated
 @Service
