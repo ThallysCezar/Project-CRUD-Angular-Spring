@@ -14,32 +14,34 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "t_users")
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Users implements UserDetails{
 	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
-	
-	@NotBlank
-    @NotNull
+	private Long id;
+
 	private String login;
-	
-	@NotBlank
-    @NotNull
+
 	private String password;
-	
-	@NotBlank
-    @NotNull
+
 	private UsersRoleEnum role;
+	
+	public Users(String login, String password, UsersRoleEnum role) {
+		this.login = login;
+		this.password = password;
+		this.role = role;
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
